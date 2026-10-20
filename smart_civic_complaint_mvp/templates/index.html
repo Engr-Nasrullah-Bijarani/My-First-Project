@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CivicPulse — Report. Track. Improve.</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-mark">C</span><span>CivicPulse<small>SMART CIVIC SERVICES</small></span></a>
+  <nav><a href="#how">How it works</a><a href="#track">Track report</a><a class="nav-button" href="/admin">Admin dashboard ↗</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="pulse"></span> YOUR CITY. YOUR VOICE.</div>
+      <h1>Small reports.<br><span>Better streets.</span></h1>
+      <p>Report civic issues in your neighborhood and follow every update — from the first report to the final resolution.</p>
+      <div class="hero-actions"><a class="button primary" href="#report">Report an issue <span>↗</span></a><a class="text-link" href="#track">Already reported? Track it →</a></div>
+      <div class="hero-proof"><div class="avatar-stack"><span>R</span><span>A</span><span>M</span></div><div><strong>Community-powered accountability</strong><small>One clear place for every civic concern.</small></div></div>
+    </div>
+    <div class="hero-visual">
+      <div class="map-grid"></div><div class="map-road road-one"></div><div class="map-road road-two"></div><div class="map-road road-three"></div>
+      <div class="map-label label-one">PARK STREET</div><div class="map-label label-two">MAIN ROAD</div>
+      <div class="map-pin pin-one"><span>!</span></div><div class="map-pin pin-two"><span>✓</span></div><div class="map-pin pin-three"><span>!</span></div>
+      <div class="map-card"><span class="map-card-icon">⌖</span><div><strong>Issues, mapped.</strong><small>Visible progress for everyone.</small></div><span class="map-live">LIVE DEMO</span></div>
+    </div>
+  </section>
+  <section class="stats-strip">
+    <div><strong>01</strong><span>Report an issue</span></div><div><strong>02</strong><span>Smart categorization</span></div><div><strong>03</strong><span>Track progress</span></div><div><strong>04</strong><span>Close the loop</span></div>
+  </section>
+  <section class="content-grid" id="report">
+    <div class="section-intro"><div class="eyebrow">MAKE YOURSELF HEARD</div><h2>What needs fixing<br>in your neighborhood?</h2><p>Share a few details. CivicPulse will categorize the issue, estimate its priority, and give you a tracking ID.</p>
+      <div class="issue-list"><div><span class="issue-icon orange">⌁</span><div><strong>Road damage</strong><small>Potholes, cracks, unsafe footpaths</small></div></div><div><span class="issue-icon purple">☼</span><div><strong>Streetlights</strong><small>Dark streets and broken lamps</small></div></div><div><span class="issue-icon green">♧</span><div><strong>Cleanliness & water</strong><small>Overflowing bins, leaks, blocked drains</small></div></div></div>
+    </div>
+    <div class="form-card">
+      <div class="card-heading"><div><span class="step-tag">NEW REPORT</span><h3>Submit a complaint</h3></div><span class="lock-note">◎ Demo-safe</span></div>
+      <form id="complaintForm">
+        <div class="field-row"><label>Issue title <input name="title" required maxlength="120" placeholder="e.g. Pothole outside the school"></label><label>Your name <input name="reporter_name" maxlength="100" placeholder="Optional"></label></div>
+        <label>Describe the issue <textarea name="description" required maxlength="2000" rows="3" placeholder="What happened? Is it creating a safety concern?"></textarea></label>
+        <label>Location <input name="location" required maxlength="200" placeholder="Street, block, landmark or area"></label>
+        <div class="field-row"><label>Latitude <input name="latitude" placeholder="Optional"></label><label>Longitude <input name="longitude" placeholder="Optional"></label></div>
+        <label class="upload-field"><span class="upload-icon">↑</span><span><strong>Add a photo (optional)</strong><small>JPG, PNG or WEBP · up to 5 MB</small></span><input type="file" name="photo" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></label>
+        <button class="button primary submit-button" type="submit">Submit report <span>→</span></button>
+        <p class="form-footnote">Please avoid including sensitive personal information in your report.</p>
+      </form>
+      <div id="submitResult" class="result-panel hidden" aria-live="polite"></div>
+    </div>
+  </section>
+  <section class="track-section" id="track">
+    <div><div class="eyebrow">STAY IN THE LOOP</div><h2>Your report deserves<br>a follow-up.</h2><p>Enter the tracking ID you received after submitting your complaint.</p></div>
+    <form id="trackForm" class="track-card"><label for="trackingId">Complaint tracking ID</label><div class="track-input-row"><span>#</span><input id="trackingId" type="number" min="1" required placeholder="e.g. 3"><button class="button dark" type="submit">Track →</button></div><div id="trackResult" aria-live="polite"></div></form>
+  </section>
+  <section class="how-section" id="how"><div class="eyebrow">SIMPLE BY DESIGN</div><h2>From report to resolution.</h2><div class="steps"><article><span>01</span><h3>Tell us what’s wrong</h3><p>Describe the issue, add a location, and optionally attach a photo.</p></article><article><span>02</span><h3>Smart triage</h3><p>Rules suggest a category and priority. Possible duplicates are flagged for review.</p></article><article><span>03</span><h3>Track the outcome</h3><p>Check the status and see the admin’s latest update using your ID.</p></article></div></section>
+</main>
+<footer><a class="brand footer-brand" href="/"><span class="brand-mark">C</span><span>CivicPulse<small>SMART CIVIC SERVICES</small></span></a><span>Hackathon MVP · Sample data · Not connected to a real municipality</span></footer>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body></html>
